@@ -1,0 +1,24 @@
+<app-header-component></app-header-component>
+<p class="main-title">All Musics</p>
+<div
+  class="table-container"
+  *ngIf="musics! && musics!.length; else noMusicsTemplate"
+>
+  <table>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let music of musics!">
+        <td>{{ music.author }}</td>
+        <td>{{ music.title }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noMusicsTemplate>
+  <p>No musics available.</p>
+</ng-template>

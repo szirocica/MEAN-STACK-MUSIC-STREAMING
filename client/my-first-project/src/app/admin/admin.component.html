@@ -1,0 +1,67 @@
+<app-header-component></app-header-component>
+<div class="main-title">Admin page</div>
+<div class="flex-container">
+  <div class="form"><app-music-form></app-music-form></div>
+</div>
+<p class="main-title">All Musics</p>
+<div
+  class="table-container"
+  *ngIf="musics! && musics!.length; else noMusicsTemplate"
+>
+  <table>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let music of musics!">
+        <td>{{ music.author }}</td>
+        <td>{{ music.title }}</td>
+        <td class="button">
+          <button (click)="onDeleteMusic(music._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noMusicsTemplate>
+  <p>No musics available.</p>
+</ng-template>
+<p class="main-title">All users</p>
+<div
+  class="table-container"
+  *ngIf="users && users.length; else noUsersTemplate"
+>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Nickname</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.email }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.nickname }}</td>
+        <td class="button">
+          <button (click)="onDeleteUser(user._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noUsersTemplate>
+  <p>No users available.</p>
+</ng-template>
+
+<div class="logout-button buttons">
+  <button type="reset" (click)="logout()">Logout</button>
+</div>
